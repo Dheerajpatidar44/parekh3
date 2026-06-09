@@ -1,26 +1,35 @@
 import React from 'react';
-import { ShoppingBag } from 'lucide-react';
+import { Eye } from 'lucide-react';
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="card-premium overflow-hidden group">
-      <div className="relative h-80 overflow-hidden">
-        <img 
-          src={product.image} 
-          alt={product.name} 
-          className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
+    <div className="group bg-white overflow-hidden border border-[#0B1C3E]/6 hover:border-[#D4A853]/40 transition-all duration-400 hover:shadow-[0_8px_40px_rgba(11,28,62,0.12)]">
+      {/* Image */}
+      <div className="relative overflow-hidden" style={{ height: '300px' }}>
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
         />
-        <div className="absolute inset-0 bg-brand-darkbrown/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-          <button className="bg-brand-gold text-white px-6 py-2.5 rounded-full font-medium hover:bg-brand-darkbrown transition-colors flex items-center shadow-lg transform translate-y-4 group-hover:translate-y-0 duration-300">
-            <ShoppingBag className="w-4 h-4 mr-2" /> View Details
+        {/* Hover overlay */}
+        <div className="absolute inset-0 bg-[#0B1C3E]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center">
+          <button className="flex items-center gap-2 bg-[#D4A853] text-[#0B1C3E] px-5 py-2.5 text-xs font-medium uppercase tracking-widest translate-y-3 group-hover:translate-y-0 transition-transform duration-400">
+            <Eye size={14} />
+            View Details
           </button>
         </div>
-      </div>
-      <div className="p-6">
-        <div className="flex justify-between items-start mb-2">
-          <p className="text-brand-gold text-xs uppercase tracking-widest font-semibold">{product.category}</p>
+        {/* Top-left amber tag */}
+        <div className="absolute top-3 left-3 bg-[#D4A853]/90 text-[#0B1C3E] text-[0.6rem] uppercase tracking-widest px-2.5 py-1 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {product.category}
         </div>
-        <h3 className="text-xl font-serif font-bold text-brand-maroon mb-2">{product.name}</h3>
+      </div>
+
+      {/* Info */}
+      <div className="p-5 border-t border-[#D4A853]/10">
+        <p className="text-[#D4A853] text-[0.6rem] uppercase tracking-[0.25em] font-medium mb-1.5">{product.category}</p>
+        <h3 className="text-base font-serif font-medium text-[#0B1C3E] group-hover:text-[#D4A853] transition-colors">
+          {product.name}
+        </h3>
       </div>
     </div>
   );

@@ -3,90 +3,98 @@ import PageHeader from '../components/ui/PageHeader';
 import { FileText, CheckCircle, Clock } from 'lucide-react';
 
 const EQuotation = () => {
+  const recentQuotes = [
+    { id: 'QT-2023-891', desc: 'Premium Silk Sarees (Qty: 500 pcs) for Retail Boutique', status: 'approved', statusLabel: 'Approved' },
+    { id: 'QT-2023-892', desc: 'Cotton Suiting Fabrics (Qty: 2000 meters)', status: 'processing', statusLabel: 'Processing' },
+  ];
+
   return (
     <div>
       <PageHeader title="e-Quotation" />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        
-        {/* Sample Quotations Section added above the form */}
-        <div className="bg-brand-darkbrown text-white p-8 rounded-xl shadow-lg mb-8">
-          <div className="flex items-center justify-between mb-6">
-             <h3 className="text-2xl font-serif font-bold text-white">Recent Quotations</h3>
-             <span className="text-sm bg-white/20 px-3 py-1 rounded-full text-brand-beige">Live Updates</span>
-          </div>
-          
-          <div className="space-y-4">
-            <div className="bg-white/10 p-5 rounded-lg flex flex-col md:flex-row md:items-center justify-between border border-white/20 gap-4">
-              <div className="flex items-start">
-                <FileText className="text-brand-maroon w-8 h-8 mr-4 shrink-0 bg-white p-1.5 rounded-md" />
-                <div>
-                  <h4 className="font-bold text-lg text-white">Quote #QT-2023-891</h4>
-                  <p className="text-sm text-gray-300 mt-1">Premium Silk Sarees (Qty: 500 pcs) for Retail Boutique</p>
+
+      <div className="bg-[#FAF7F0] py-24">
+        <div className="max-w-3xl mx-auto px-5 md:px-8 space-y-8">
+
+          {/* Recent Quotations */}
+          <div className="bg-[#0B1C3E]">
+            <div className="px-8 py-6 border-b border-white/10 flex items-center justify-between">
+              <h3 className="text-lg font-serif font-light text-white">Recent Quotations</h3>
+              <span className="text-[0.6rem] bg-[#D4A853]/20 text-[#D4A853] px-3 py-1 uppercase tracking-widest">Live Updates</span>
+            </div>
+            <div className="p-4 space-y-3">
+              {recentQuotes.map((q) => (
+                <div key={q.id} className="bg-white/5 border border-white/10 px-6 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-white/8 transition-colors">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-[#D4A853]/20 flex items-center justify-center shrink-0">
+                      <FileText size={14} className="text-[#D4A853]" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-white text-sm">Quote #{q.id}</h4>
+                      <p className="text-white/45 text-xs mt-1 font-light">{q.desc}</p>
+                    </div>
+                  </div>
+                  <div className={`flex items-center gap-1.5 text-xs px-3 py-1.5 self-start md:self-auto whitespace-nowrap font-medium ${
+                    q.status === 'approved'
+                      ? 'bg-green-500/15 text-green-400'
+                      : 'bg-amber-500/15 text-amber-400'
+                  }`}>
+                    {q.status === 'approved' ? <CheckCircle size={12} /> : <Clock size={12} />}
+                    {q.statusLabel}
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center text-sm font-medium bg-green-500/20 text-green-300 px-3 py-1.5 rounded-full whitespace-nowrap self-start md:self-auto">
-                <CheckCircle className="w-4 h-4 mr-1.5" /> Approved
-              </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Form */}
+          <div className="bg-white border border-[#0B1C3E]/8">
+            <div className="bg-[#D4A853] px-10 py-8">
+              <h2 className="text-2xl font-serif font-light text-[#0B1C3E]">Request a New Quotation</h2>
+              <p className="text-[#0B1C3E]/70 text-sm mt-1 font-light">Submit your specific product requirements to receive a formal e-Quotation.</p>
             </div>
 
-            <div className="bg-white/10 p-5 rounded-lg flex flex-col md:flex-row md:items-center justify-between border border-white/20 gap-4">
-              <div className="flex items-start">
-                <FileText className="text-brand-maroon w-8 h-8 mr-4 shrink-0 bg-white p-1.5 rounded-md" />
-                <div>
-                  <h4 className="font-bold text-lg text-white">Quote #QT-2023-892</h4>
-                  <p className="text-sm text-gray-300 mt-1">Cotton Suiting Fabrics (Qty: 2000 meters)</p>
+            <div className="p-10">
+              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-[#0B1C3E] font-medium mb-2">Full Name</label>
+                    <input type="text" className="input-luxury" required />
+                  </div>
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-[#0B1C3E] font-medium mb-2">Company Name</label>
+                    <input type="text" className="input-luxury" required />
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center text-sm font-medium bg-yellow-500/20 text-yellow-300 px-3 py-1.5 rounded-full whitespace-nowrap self-start md:self-auto">
-                <Clock className="w-4 h-4 mr-1.5" /> Processing
-              </div>
+
+                <div>
+                  <label className="block text-xs uppercase tracking-wider text-[#0B1C3E] font-medium mb-2">Product Category</label>
+                  <select className="input-luxury bg-white">
+                    <option>Sarees</option>
+                    <option>Suiting & Shirting</option>
+                    <option>Home Furnishing</option>
+                    <option>Ethnic Wear</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs uppercase tracking-wider text-[#0B1C3E] font-medium mb-2">Expected Quantity</label>
+                  <input type="number" className="input-luxury" placeholder="e.g. 500 meters / 100 pieces" />
+                </div>
+
+                <div>
+                  <label className="block text-xs uppercase tracking-wider text-[#0B1C3E] font-medium mb-2">Additional Specifications</label>
+                  <textarea rows="4" className="input-luxury resize-none" placeholder="Material preferences, color codes, delivery timeline..." />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#D4A853] text-[#0B1C3E] py-4 text-xs font-semibold uppercase tracking-widest hover:bg-[#0B1C3E] hover:text-white transition-all duration-300"
+                >
+                  Generate Request
+                </button>
+              </form>
             </div>
           </div>
-        </div>
-
-        {/* The Form Section */}
-        <div className="bg-white p-8 md:p-12 rounded-xl shadow-xl border border-gray-100">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-serif font-bold text- mb-4">Request a New Quotation</h2>
-            <p className="text-gray-600">Submit your specific product requirements to receive a formal e-Quotation from our sales team.</p>
-          </div>
-          
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                <input type="text" className="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-maroon focus:border-brand-maroon p-3 border" required />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
-                <input type="text" className="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-maroon focus:border-brand-maroon p-3 border" required />
-              </div>
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Product Category</label>
-              <select className="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-maroon focus:border-brand-maroon p-3 border bg-white">
-                <option>Sarees</option>
-                <option>Suiting & Shirting</option>
-                <option>Home Furnishing</option>
-                <option>Ethnic Wear</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Expected Quantity</label>
-              <input type="number" className="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-maroon focus:border-brand-maroon p-3 border" placeholder="e.g. 500 meters / 100 pieces" />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Additional Specifications</label>
-              <textarea rows="4" className="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-maroon focus:border-brand-maroon p-3 border" placeholder="Material preferences, color codes, delivery timeline..."></textarea>
-            </div>
-            
-            <button type="submit" className="w-full bg-brand-maroon text-white font-bold py-4 px-6 rounded hover:bg-[#022c22] transition-colors shadow-lg">
-              Generate Request
-            </button>
-          </form>
         </div>
       </div>
     </div>

@@ -14,33 +14,39 @@ const MediaGallery = () => {
     { id: 6, type: 'Event', title: 'International Buyers Meet', image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=800' },
   ];
 
+  const filters = ['All', 'Store', 'Event', 'Factory', 'Product'];
   const filteredItems = filter === 'All' ? galleryItems : galleryItems.filter(item => item.type === filter);
 
   return (
     <div>
-      <PageHeader title="Business Media Gallery" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {['All', 'Store', 'Event', 'Factory', 'Product'].map((category) => (
-            <button
-              key={category}
-              onClick={() => setFilter(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-colors ${
-                filter === category 
-                  ? 'bg-brand-maroon text-white' 
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+      <PageHeader title="Media Gallery" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item) => (
-            <GalleryCard key={item.id} item={item} />
-          ))}
+      <div className="bg-[#FAF7F0] py-24">
+        <div className="max-w-7xl mx-auto px-5 md:px-8">
+
+          {/* Filter tabs */}
+          <div className="flex flex-wrap gap-2 mb-12">
+            {filters.map((f) => (
+              <button
+                key={f}
+                onClick={() => setFilter(f)}
+                className={`px-6 py-2.5 text-xs uppercase tracking-widest font-medium transition-all duration-200 ${
+                  filter === f
+                    ? 'bg-[#0B1C3E] text-white'
+                    : 'bg-white border border-[#0B1C3E]/15 text-[#6B7A99] hover:border-[#D4A853] hover:text-[#D4A853]'
+                }`}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+
+          {/* Gallery grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {filteredItems.map((item) => (
+              <GalleryCard key={item.id} item={item} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

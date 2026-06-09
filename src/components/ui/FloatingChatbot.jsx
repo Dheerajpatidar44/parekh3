@@ -10,44 +10,44 @@ const FloatingChatbot = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, y: 16, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            exit={{ opacity: 0, y: 16, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="bg-[#f8fafc] w-[350px] sm:w-[380px] rounded-2xl shadow-2xl overflow-hidden mb-4 border border-gray-200"
+            className="bg-[#FAF7F0] w-[340px] sm:w-[370px] shadow-[0_20px_60px_rgba(11,28,62,0.25)] overflow-hidden mb-4 border border-[#0B1C3E]/10"
           >
             {/* Header */}
-            <div className="bg-[#C48B5D] px-5 py-4 flex items-center justify-between rounded-t-2xl">
-              <div className="flex items-center space-x-3">
-                <div className="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-white font-bold tracking-wide">Parekh AI Assistant</span>
+            <div className="bg-[#0B1C3E] px-5 py-4 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-[#D4A853] rounded-full animate-pulse" />
+                <span className="text-white text-sm font-medium tracking-wide">Parekh AI Assistant</span>
               </div>
-              <button 
+              <button
                 onClick={() => setIsOpen(false)}
-                className="text-white/80 hover:text-white transition-colors"
+                className="text-white/50 hover:text-white transition-colors"
               >
-                <X className="w-5 h-5" />
+                <X size={18} />
               </button>
             </div>
 
             {/* Chat Body */}
-            <div className="p-5 h-[320px] overflow-y-auto bg-[#f8fafc]">
-              <div className="bg-white text-gray-700 p-4 rounded-2xl rounded-tl-sm shadow-[0_2px_10px_-4px_rgba(0,0,0,0.1)] border border-gray-100 max-w-[85%]">
-                <p className="text-[15px] leading-relaxed font-sans">
+            <div className="p-5 h-72 overflow-y-auto">
+              <div className="bg-white border border-[#D4A853]/20 p-4 max-w-[85%] shadow-sm">
+                <p className="text-sm text-[#0B1C3E] leading-relaxed font-light">
                   Namaste! 🙏 Welcome to ParekhTEX. How can I help you today?
                 </p>
               </div>
             </div>
 
-            {/* Footer Input */}
-            <div className="p-4 bg-white border-t border-gray-200 flex items-center space-x-3">
-              <input 
-                type="text" 
-                placeholder="Ask something..." 
-                className="flex-grow bg-white border border-gray-200 rounded-full px-5 py-3 text-[15px] focus:outline-none focus:border-[#C48B5D] focus:ring-1 focus:ring-[#C48B5D] transition-all placeholder-gray-400 text-gray-700"
+            {/* Input */}
+            <div className="p-4 bg-white border-t border-[#0B1C3E]/8 flex items-center gap-3">
+              <input
+                type="text"
+                placeholder="Ask something..."
+                className="flex-grow border border-[#0B1C3E]/15 px-4 py-2.5 text-sm focus:outline-none focus:border-[#D4A853] transition-colors placeholder-[#6B7A99] text-[#0B1C3E] bg-[#FAF7F0]"
               />
-              <button className="bg-[#C48B5D] text-white p-3 rounded-full hover:bg-[#a6744b] transition-colors shrink-0 shadow-sm flex items-center justify-center group">
-                <Send className="w-5 h-5 ml-1 group-hover:translate-x-0.5 transition-transform" />
+              <button className="bg-[#D4A853] text-[#0B1C3E] p-2.5 hover:bg-[#0B1C3E] hover:text-white transition-all duration-300 shrink-0">
+                <Send size={16} />
               </button>
             </div>
           </motion.div>
@@ -55,11 +55,11 @@ const FloatingChatbot = () => {
       </AnimatePresence>
 
       <button
-        className="bg-[#022c22] text-white p-4 rounded-full shadow-[0_4px_14px_0_rgba(2,44,34,0.39)] hover:bg-[#064e3b] hover:-translate-y-1 transition-all flex items-center justify-center"
+        className="bg-[#0B1C3E] text-white p-4 shadow-[0_8px_30px_rgba(11,28,62,0.4)] hover:bg-[#D4A853] hover:text-[#0B1C3E] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center"
         aria-label="Open Chatbot"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <MessageSquareText className="h-8 w-8" />
+        <MessageSquareText size={26} />
       </button>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/layout/Layout';
-import Preloader from './components/ui/Preloader';
+import Preloader from './components/Preloader';
 
 // Pages
 import Home from './pages/Home';
@@ -29,30 +29,29 @@ const ScrollToTop = () => {
 
 function App() {
   return (
-    <>
-      <Preloader />
-      <Router>
-        <ScrollToTop />
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/trade-enquiry" element={<TradeEnquiry />} />
-          <Route path="/e-quotation" element={<EQuotation />} />
-          <Route path="/e-auction" element={<EAuction />} />
-          <Route path="/retail-management" element={<RetailManagement />} />
-          <Route path="/trade-circular" element={<TradeCircular />} />
-          <Route path="/notice-board" element={<NoticeBoard />} />
-          <Route path="/career" element={<Career />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/customer-review" element={<CustomerReview />} />
-          <Route path="/media-gallery" element={<MediaGallery />} />
-        </Routes>
-      </Layout>
-      </Router>
-    </>
+    <Router>
+      <ScrollToTop />
+      <Preloader>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/trade-enquiry" element={<TradeEnquiry />} />
+            <Route path="/e-quotation" element={<EQuotation />} />
+            <Route path="/e-auction" element={<EAuction />} />
+            <Route path="/retail-management" element={<RetailManagement />} />
+            <Route path="/trade-circular" element={<TradeCircular />} />
+            <Route path="/notice-board" element={<NoticeBoard />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/customer-review" element={<CustomerReview />} />
+            <Route path="/media-gallery" element={<MediaGallery />} />
+          </Routes>
+        </Layout>
+      </Preloader>
+    </Router>
   );
 }
 

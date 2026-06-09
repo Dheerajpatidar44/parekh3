@@ -1,134 +1,193 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X, ShoppingBag, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, ChevronDown, Gem } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
+  const location = useLocation();
+  const dropdownRef = useRef(null);
 
-  const mainLinks = [
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+    setDropdownOpen(false);
+    setMobileResourcesOpen(false);
+  }, [location]);
+
+  const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Contact Us', path: '/contact' },
-    { name: 'Product Page', path: '/products' },
-    { name: 'Our Retail Management', path: '/retail-management' },
+    { name: 'About', path: '/about' },
+    { name: 'Products', path: '/products' },
+    { name: 'Contact', path: '/contact' },
   ];
 
-  const dropdownLinks = [
+  const resourceLinks = [
+    { name: 'Retail Management', path: '/retail-management' },
+    { name: 'Trade Enquiry', path: '/trade-enquiry' },
     { name: 'e-Quotation', path: '/e-quotation' },
     { name: 'e-Auction', path: '/e-auction' },
     { name: 'Trade Circular', path: '/trade-circular' },
-    { name: 'Blog Page', path: '/blog' },
     { name: 'Notice Board', path: '/notice-board' },
-    { name: 'Career Page', path: '/career' },
+    { name: 'Career', path: '/career' },
     { name: 'Customer Review', path: '/customer-review' },
-    { name: 'Business Media Gallery', path: '/media-gallery' },
+    { name: 'Media Gallery', path: '/media-gallery' },
+    { name: 'Blog', path: '/blog' },
   ];
 
-  return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20">
-          <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center">
-              <ShoppingBag className="h-8 w-8 text-brand-gold mr-3" />
-              <span className="font-serif font-bold text-2xl text-brand-maroon tracking-wider">PAREKH<span className="text-brand-gold font-light">TEX</span></span>
-            </Link>
-          </div>
-          <div className="hidden lg:flex items-center space-x-6">
-            {mainLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className="text-gray-700 hover:text-brand-maroon px-2 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-            
-            {/* Dropdown Menu */}
-            <div 
-              className="relative group h-full flex items-center"
-              onMouseEnter={() => setIsDropdownOpen(true)}
-              onMouseLeave={() => setIsDropdownOpen(false)}
-            >
-              <button className="flex items-center text-gray-700 hover:text-brand-maroon px-2 py-2 rounded-md text-sm font-medium transition-colors">
-                Pages <ChevronDown className="ml-1 w-4 h-4" />
-              </button>
-              
-              <div 
-                className={`absolute top-full left-0 w-56 bg-white shadow-xl rounded-md overflow-hidden transition-all duration-300 transform origin-top ${isDropdownOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'} border border-gray-100`}
-              >
-                <div className="py-2">
-                  {dropdownLinks.map((link) => (
-                    <Link
-                      key={link.name}
-                      to={link.path}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-maroon hover:text-white transition-colors"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
+  const isActive = (path) => location.pathname === path;
 
-            <Link to="/trade-enquiry" className="btn-premium ml-4">
-              Trade Enquiry
-            </Link>
+  return (
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-[#0B1C3E] shadow-[0_4px_30px_rgba(0,0,0,0.35)] py-3'
+          : 'bg-[#0B1C3E]/95 backdrop-blur-md py-5'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-5 md:px-8 flex justify-between items-center">
+
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3 z-50 group">
+          <div className="w-8 h-8 border border-[#D4A853] flex items-center justify-center rotate-45 group-hover:bg-[#D4A853] transition-colors duration-300">
+            <span className="rotate-[-45deg] text-[#D4A853] group-hover:text-[#0B1C3E] text-xs font-serif font-bold transition-colors duration-300">P</span>
           </div>
-          <div className="flex items-center lg:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-brand-maroon focus:outline-none"
+          <div className="flex flex-col">
+            <span className="text-xl md:text-2xl font-serif font-semibold text-white tracking-[0.2em] leading-none">PAREKH</span>
+            <span className="text-[0.5rem] uppercase tracking-[0.35em] text-[#D4A853]/80 font-light">Est. Heritage Textiles</span>
+          </div>
+        </Link>
+
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={`text-xs uppercase tracking-[0.12em] font-medium transition-all duration-200 relative group ${
+                isActive(link.path) ? 'text-[#D4A853]' : 'text-white/85 hover:text-[#D4A853]'
+              }`}
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {link.name}
+              <span className={`absolute -bottom-1 left-0 h-px bg-[#D4A853] transition-all duration-300 ${isActive(link.path) ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+            </Link>
+          ))}
+
+          {/* Resources Dropdown */}
+          <div
+            ref={dropdownRef}
+            className="relative"
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            <button className={`flex items-center gap-1.5 text-xs uppercase tracking-[0.12em] font-medium transition-colors ${dropdownOpen ? 'text-[#D4A853]' : 'text-white/85 hover:text-[#D4A853]'}`}>
+              <span>Resources</span>
+              <ChevronDown size={14} className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} />
             </button>
+
+            <AnimatePresence>
+              {dropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.18 }}
+                  className="absolute top-full right-0 mt-5 w-64 bg-[#0B1C3E] border border-[#D4A853]/20 shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+                >
+                  {/* Top accent */}
+                  <div className="h-0.5 bg-[#D4A853]" />
+                  <div className="py-3">
+                    {resourceLinks.map((link, i) => (
+                      <Link
+                        key={link.name}
+                        to={link.path}
+                        className="flex items-center px-5 py-2.5 text-xs text-white/75 hover:text-[#D4A853] hover:bg-white/5 transition-all duration-150 tracking-wider uppercase group"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-[#D4A853]/40 group-hover:bg-[#D4A853] mr-3 transition-colors" />
+                        {link.name}
+                      </Link>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-        </div>
+        </nav>
+
+        {/* Mobile Toggle */}
+        <button
+          className="lg:hidden text-white hover:text-[#D4A853] transition-colors z-50 p-1"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
       </div>
 
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="lg:hidden bg-brand-light border-t border-gray-200 max-h-[80vh] overflow-y-auto">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {mainLinks.map((link) => (
-               <Link
-                key={link.name}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-maroon hover:bg-gray-50"
-              >
-                {link.name}
-              </Link>
-            ))}
-            
-            <div className="border-t border-gray-200 mt-2 pt-2">
-              <span className="block px-3 py-2 text-sm font-bold text-gray-900">More Pages</span>
-              {dropdownLinks.map((link) => (
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: '100vh' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.35 }}
+            className="lg:hidden fixed inset-0 top-0 pt-24 bg-[#060F22] z-40 overflow-y-auto"
+          >
+            <div className="flex flex-col px-8 pb-20">
+              <div className="h-px bg-[#D4A853]/20 mb-8" />
+
+              {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-maroon hover:bg-gray-50 pl-6"
+                  className={`text-2xl font-serif font-light py-3 border-b border-white/5 ${isActive(link.path) ? 'text-[#D4A853]' : 'text-white/80 hover:text-[#D4A853]'} transition-colors`}
                 >
                   {link.name}
                 </Link>
               ))}
-            </div>
 
-            <Link
-              to="/trade-enquiry"
-              onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 mt-4 text-center rounded-xl text-base font-medium btn-premium"
-            >
-              Trade Enquiry
-            </Link>
-          </div>
-        </div>
-      )}
-    </nav>
+              <button
+                onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
+                className="text-2xl font-serif font-light py-3 border-b border-white/5 text-white/80 flex justify-between items-center"
+              >
+                <span>Resources</span>
+                <ChevronDown size={18} className={`transition-transform duration-300 ${mobileResourcesOpen ? 'rotate-180 text-[#D4A853]' : 'text-white/40'}`} />
+              </button>
+
+              <AnimatePresence>
+                {mobileResourcesOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="overflow-hidden"
+                  >
+                    {resourceLinks.map((link) => (
+                      <Link
+                        key={link.name}
+                        to={link.path}
+                        className="block py-2.5 pl-5 text-sm text-[#D4A853]/70 hover:text-[#D4A853] border-b border-white/5 tracking-wide transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 

@@ -3,85 +3,108 @@ import PageHeader from '../components/ui/PageHeader';
 import { Gavel, Clock, AlertCircle } from 'lucide-react';
 
 const EAuction = () => {
+  const liveAuctions = [
+    { lot: '#1042', name: 'Silk Blends', closing: '2h 15m' },
+    { lot: '#1045', name: 'Cotton Surplus', closing: '5h 30m' },
+  ];
+
   return (
     <div>
       <PageHeader title="e-Auction Portal" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="flex flex-col lg:flex-row gap-12">
-          <div className="lg:w-1/3">
-            <div className="bg-brand-darkbrown text-white rounded-xl shadow-lg mb-8 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1584227185011-8071e6be12b5?auto=format&fit=crop&w=800&q=80" alt="Live Auctions" className="w-full h-48 object-cover" />
-              <div className="p-8">
-                <h3 className="text-2xl font-serif font-bold mb-4">Live Auctions</h3>
-                <div className="space-y-4">
-                  <div className="bg-white/10 p-4 rounded-lg flex items-center justify-between border border-white/20">
-                    <div>
-                      <h4 className="font-bold text-brand-light">Lot #1042: Silk Blends</h4>
-                      <p className="text-sm text-gray-300">Closing in: 2h 15m</p>
-                    </div>
-                    <Gavel className="text-white w-6 h-6" />
-                  </div>
-                  <div className="bg-white/10 p-4 rounded-lg flex items-center justify-between border border-white/20">
-                    <div>
-                      <h4 className="font-bold text-brand-light">Lot #1045: Cotton Surplus</h4>
-                      <p className="text-sm text-gray-300">Closing in: 5h 30m</p>
-                    </div>
-                    <Gavel className="text-white w-6 h-6" />
+
+      <div className="bg-[#FAF7F0] py-24">
+        <div className="max-w-7xl mx-auto px-5 md:px-8">
+          <div className="flex flex-col lg:flex-row gap-8">
+
+            {/* Sidebar */}
+            <div className="lg:w-80 shrink-0 space-y-5">
+              {/* Live Auctions panel */}
+              <div className="bg-[#0B1C3E] overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1584227185011-8071e6be12b5?auto=format&fit=crop&w=800&q=80"
+                  alt="Live Auctions"
+                  className="w-full h-44 object-cover opacity-60"
+                />
+                <div className="p-6">
+                  <h3 className="text-lg font-serif font-light text-white mb-5">Live Auctions</h3>
+                  <div className="space-y-3">
+                    {liveAuctions.map((a) => (
+                      <div key={a.lot} className="bg-white/8 border border-white/10 p-4 flex items-center justify-between hover:bg-white/12 transition-colors">
+                        <div>
+                          <h4 className="text-white text-sm font-medium">Lot {a.lot}: {a.name}</h4>
+                          <p className="text-white/40 text-xs mt-1 font-light">Closing in: {a.closing}</p>
+                        </div>
+                        <Gavel size={16} className="text-[#D4A853]" />
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-            </div>
-            
-            <div className="bg-red-50 p-6 rounded-xl border border-red-100 flex items-start">
-              <AlertCircle className="text-red-500 w-6 h-6 mr-3 shrink-0 mt-1" />
-              <p className="text-sm text-red-800">
-                Participation in e-Auctions requires prior registration and EMD deposit. Ensure your KYC is updated.
-              </p>
-            </div>
-          </div>
-          
-          <div className="lg:w-2/3">
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-              <h2 className="text-2xl font-serif font-bold text-brand-darkbrown mb-6">Register for e-Auction</h2>
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Company Registration No.</label>
-                    <input type="text" className="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-maroon focus:border-brand-maroon p-3 border" required />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">GST IN</label>
-                    <input type="text" className="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-maroon focus:border-brand-maroon p-3 border" required />
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Authorized Bidder Name</label>
-                    <input type="text" className="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-maroon focus:border-brand-maroon p-3 border" required />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Official Email</label>
-                    <input type="email" className="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-maroon focus:border-brand-maroon p-3 border" required />
-                  </div>
-                </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Bank Account Details (For EMD Refund)</label>
-                  <textarea rows="3" className="w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-maroon focus:border-brand-maroon p-3 border" placeholder="A/c No., IFSC Code, Bank Name"></textarea>
-                </div>
-                
-                <div className="flex items-center mt-4">
-                  <input type="checkbox" className="h-4 w-4 text-brand-maroon border-gray-300 rounded focus:ring-brand-maroon" required />
-                  <label className="ml-2 block text-sm text-gray-700">
-                    I accept the Terms and Conditions of the e-Auction portal.
-                  </label>
-                </div>
-                
-                <button type="submit" className="w-full md:w-auto bg-brand-maroon text-white font-bold py-3 px-8 rounded hover:bg-[#022c22] transition-colors shadow-sm">
-                  Register Now
-                </button>
-              </form>
+              {/* Warning */}
+              <div className="bg-amber-50 border-l-4 border-[#D4A853] p-5 flex gap-3">
+                <AlertCircle size={16} className="text-[#D4A853] shrink-0 mt-0.5" />
+                <p className="text-xs text-[#6B7A99] leading-relaxed font-light">
+                  Participation in e-Auctions requires prior registration and EMD deposit. Ensure your KYC is updated.
+                </p>
+              </div>
+            </div>
+
+            {/* Main form */}
+            <div className="flex-1 bg-white border border-[#0B1C3E]/8">
+              <div className="bg-[#0B1C3E] px-8 py-7">
+                <h2 className="text-2xl font-serif font-light text-white">Register for e-Auction</h2>
+              </div>
+
+              <div className="p-8">
+                <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider text-[#0B1C3E] font-medium mb-2">Company Registration No.</label>
+                      <input type="text" className="input-luxury" required />
+                    </div>
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider text-[#0B1C3E] font-medium mb-2">GST IN</label>
+                      <input type="text" className="input-luxury" required />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider text-[#0B1C3E] font-medium mb-2">Authorized Bidder Name</label>
+                      <input type="text" className="input-luxury" required />
+                    </div>
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider text-[#0B1C3E] font-medium mb-2">Official Email</label>
+                      <input type="email" className="input-luxury" required />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-[#0B1C3E] font-medium mb-2">Bank Account Details (For EMD Refund)</label>
+                    <textarea rows="3" className="input-luxury resize-none" placeholder="A/c No., IFSC Code, Bank Name" />
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="checkbox"
+                      id="terms-auction"
+                      className="h-4 w-4 border-[#0B1C3E]/30 rounded-none accent-[#D4A853]"
+                      required
+                    />
+                    <label htmlFor="terms-auction" className="text-xs text-[#6B7A99] font-light">
+                      I accept the Terms and Conditions of the e-Auction portal.
+                    </label>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="bg-[#0B1C3E] text-white px-10 py-3.5 text-xs font-medium uppercase tracking-widest hover:bg-[#D4A853] hover:text-[#0B1C3E] transition-all duration-300"
+                  >
+                    Register Now
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>

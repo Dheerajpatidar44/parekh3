@@ -13,37 +13,51 @@ const TradeCircular = () => {
   return (
     <div>
       <PageHeader title="Trade Circulars" />
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-          <div className="p-6 bg-brand-light border-b border-gray-200 flex justify-between items-center">
-            <h2 className="text-xl font-serif font-bold text-brand-darkbrown">Latest Official Circulars</h2>
-            <div className="text-sm text-gray-500">Document Hub</div>
-          </div>
-          <div className="divide-y divide-gray-100">
-            {circulars.map((circular) => (
-              <div key={circular.id} className="p-6 hover:bg-gray-50 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="flex items-start">
-                  <FileText className="text-brand-maroon w-8 h-8 mr-4 shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900 text-lg">{circular.title}</h3>
-                    <div className="flex items-center text-sm text-gray-500 mt-1 space-x-4">
-                      <span>Date: {circular.date}</span>
-                      <span>Ref: {circular.ref}</span>
+
+      <div className="bg-[#FAF7F0] py-24">
+        <div className="max-w-4xl mx-auto px-5 md:px-8">
+
+          <div className="bg-white border border-[#0B1C3E]/8 overflow-hidden">
+            {/* Header */}
+            <div className="bg-[#0B1C3E] px-8 py-5 flex justify-between items-center">
+              <h2 className="text-lg font-serif font-light text-white">Latest Official Circulars</h2>
+              <span className="text-[0.6rem] text-[#D4A853] uppercase tracking-widest">Document Hub</span>
+            </div>
+
+            {/* List */}
+            <div>
+              {circulars.map((circular, i) => (
+                <div
+                  key={circular.id}
+                  className={`px-8 py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#FAF7F0] transition-colors group ${
+                    i < circulars.length - 1 ? 'border-b border-[#0B1C3E]/6' : ''
+                  }`}
+                >
+                  <div className="flex items-start gap-5">
+                    <div className="w-10 h-10 border border-[#D4A853]/30 flex items-center justify-center shrink-0 group-hover:border-[#D4A853] group-hover:bg-[#D4A853]/10 transition-all">
+                      <FileText size={14} className="text-[#D4A853]" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-[#0B1C3E] text-sm mb-1.5 group-hover:text-[#D4A853] transition-colors">{circular.title}</h3>
+                      <div className="flex items-center gap-5 text-xs text-[#6B7A99] font-light">
+                        <span>Date: {circular.date}</span>
+                        <span className="text-[#D4A853]/60">|</span>
+                        <span>Ref: {circular.ref}</span>
+                      </div>
                     </div>
                   </div>
+
+                  <div className="flex items-center gap-2">
+                    <button className="flex items-center gap-1.5 px-4 py-2 border border-[#0B1C3E] text-[#0B1C3E] text-xs font-medium uppercase tracking-wider hover:bg-[#0B1C3E] hover:text-white transition-all duration-200">
+                      <Eye size={12} /> View
+                    </button>
+                    <button className="flex items-center gap-1.5 px-4 py-2 bg-[#D4A853] text-[#0B1C3E] text-xs font-medium uppercase tracking-wider hover:bg-[#0B1C3E] hover:text-white transition-all duration-200">
+                      <Printer size={12} /> Print
+                    </button>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <button className="flex items-center px-4 py-2 border border-brand-maroon text-brand-maroon text-sm font-medium rounded hover:bg-brand-maroon hover:text-white transition-colors">
-                    <Eye className="w-4 h-4 mr-2" />
-                    View
-                  </button>
-                  <button className="flex items-center px-4 py-2 bg-brand-maroon text-white text-sm font-medium rounded hover:bg-[#022c22] transition-colors">
-                    <Printer className="w-4 h-4 mr-2" />
-                    Print
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

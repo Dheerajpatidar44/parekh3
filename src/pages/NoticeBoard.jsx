@@ -13,25 +13,33 @@ const NoticeBoard = () => {
   return (
     <div>
       <PageHeader title="Notice Board" />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="space-y-4">
-          {notices.map((notice) => (
-            <div key={notice.id} className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-brand-maroon hover:shadow-md transition-shadow cursor-pointer flex items-center justify-between group">
-              <div className="flex items-start">
-                <Bell className={`w-6 h-6 mr-4 shrink-0 mt-1 ${notice.isNew ? 'text-brand-maroon' : 'text-gray-400'}`} />
-                <div>
-                  <div className="flex items-center mb-1">
-                    <span className="text-sm text-gray-500 font-medium">{notice.date}</span>
-                    {notice.isNew && (
-                      <span className="ml-3 bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded-full font-bold">NEW</span>
-                    )}
+
+      <div className="bg-[#FAF7F0] py-24">
+        <div className="max-w-3xl mx-auto px-5 md:px-8">
+          <div className="space-y-3">
+            {notices.map((notice) => (
+              <div
+                key={notice.id}
+                className={`group bg-white border-l-4 px-7 py-5 cursor-pointer flex items-center justify-between hover:shadow-[0_4px_20px_rgba(11,28,62,0.1)] transition-all duration-300 ${
+                  notice.isNew ? 'border-[#D4A853]' : 'border-[#0B1C3E]/15'
+                }`}
+              >
+                <div className="flex items-start gap-4">
+                  <Bell size={16} className={`shrink-0 mt-1 ${notice.isNew ? 'text-[#D4A853]' : 'text-[#6B7A99]'}`} />
+                  <div>
+                    <div className="flex items-center gap-3 mb-1.5">
+                      <span className="text-xs text-[#6B7A99] font-light">{notice.date}</span>
+                      {notice.isNew && (
+                        <span className="bg-[#D4A853]/15 text-[#D4A853] text-[0.55rem] px-2 py-0.5 uppercase tracking-widest font-medium">NEW</span>
+                      )}
+                    </div>
+                    <h3 className="text-sm font-medium text-[#0B1C3E] group-hover:text-[#D4A853] transition-colors">{notice.title}</h3>
                   </div>
-                  <h3 className="font-semibold text-gray-900 group-hover:text-brand-maroon transition-colors">{notice.title}</h3>
                 </div>
+                <ChevronRight size={16} className="text-[#0B1C3E]/20 group-hover:text-[#D4A853] transition-colors shrink-0" />
               </div>
-              <ChevronRight className="text-gray-300 group-hover:text-brand-maroon transition-colors w-6 h-6 shrink-0" />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

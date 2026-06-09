@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import SectionTitle from '../ui/SectionTitle';
 import { categories } from '../../data/mockData';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -9,70 +8,82 @@ const Categories = () => {
 
   const slide = (direction) => {
     if (sliderRef.current) {
-      const scrollAmount = 300; // Adjust scroll amount as needed
       sliderRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        left: direction === 'left' ? -320 : 320,
         behavior: 'smooth'
       });
     }
   };
 
   return (
-    <section className="py-20 bg-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle 
-          title="Shop by Category" 
-          subtitle="Discover our wide range of textile products tailored for your every need."
-          center
-        />
-        
-        <div className="relative group/slider w-full">
+    <section className="pt-24 pb-10 bg-[#FAF7F0]">
+      <div className="max-w-7xl mx-auto px-5 md:px-8">
+
+        {/* Section header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div>
+            <p className="text-[#D4A853] text-xs uppercase tracking-[0.4em] font-medium mb-3">Our Collections</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-light text-[#0B1C3E]">Shop by Category</h2>
+            <div className="w-12 h-0.5 bg-[#D4A853] mt-4" />
+          </div>
+          <p className="text-[#6B7A99] text-sm max-w-xs leading-relaxed md:text-right font-light">
+            Discover our wide range of premium textile products tailored for every occasion.
+          </p>
+        </div>
+
+        {/* Slider with arrows */}
+        <div className="relative group/slider">
           {/* Left Arrow */}
-          <button 
+          <button
             onClick={() => slide('left')}
-            className="absolute -left-3 md:-left-5 lg:-left-8 top-[35%] -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 text-brand-darkbrown hover:text-brand-maroon hover:bg-gray-50 transition-all"
+            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-[#0B1C3E] text-white flex items-center justify-center hover:bg-[#D4A853] hover:text-[#0B1C3E] transition-all duration-300 shadow-lg opacity-0 group-hover/slider:opacity-100"
             aria-label="Scroll Left"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5" />
           </button>
 
-          {/* Slider Container */}
-          <div 
+          {/* Slider */}
+          <div
             ref={sliderRef}
-            className="flex overflow-x-auto gap-4 md:gap-6 lg:gap-8 pb-8 snap-x snap-mandatory hide-scrollbar"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory hide-scrollbar"
           >
             {categories.map((category) => (
-              <Link 
-                key={category.id} 
-                to="/products" 
-                className="group flex-none w-40 md:w-48 lg:w-56 snap-start"
+              <Link
+                key={category.id}
+                to="/products"
+                className="group flex-none w-52 snap-start"
               >
-                <div className="relative rounded-2xl overflow-hidden aspect-[3/4] mb-2 shadow-sm group-hover:shadow-xl transition-shadow border border-gray-100">
-                  <img 
-                    src={category.image} 
-                    alt={category.name} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                {/* Image container */}
+                <div className="relative aspect-[2/3] overflow-hidden mb-4">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-darkbrown/90 via-brand-darkbrown/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-2 group-hover:-translate-y-1 transition-transform duration-300">
-                    <h3 className="font-serif font-medium text-white text-lg tracking-wide shadow-black">
-                      {category.name}
-                    </h3>
-                    <div className="w-8 h-0.5 bg-brand-gold mt-2 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+                  {/* Overlay on hover */}
+                  <div className="absolute inset-0 bg-[#0B1C3E]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-[#D4A853] text-xs uppercase tracking-widest font-medium border border-[#D4A853] px-4 py-2">
+                      Explore
+                    </span>
                   </div>
+                  {/* Amber bottom line */}
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D4A853] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 </div>
+                {/* Category name */}
+                <h3 className="text-sm font-medium text-[#0B1C3E] group-hover:text-[#D4A853] transition-colors tracking-wide">
+                  {category.name}
+                </h3>
               </Link>
             ))}
           </div>
 
           {/* Right Arrow */}
-          <button 
+          <button
             onClick={() => slide('right')}
-            className="absolute -right-3 md:-right-5 lg:-right-8 top-[35%] -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 text-brand-darkbrown hover:text-brand-maroon hover:bg-gray-50 transition-all"
+            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-[#0B1C3E] text-white flex items-center justify-center hover:bg-[#D4A853] hover:text-[#0B1C3E] transition-all duration-300 shadow-lg opacity-0 group-hover/slider:opacity-100"
             aria-label="Scroll Right"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5" />
           </button>
         </div>
       </div>
