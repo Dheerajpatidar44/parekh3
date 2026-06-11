@@ -7,7 +7,7 @@ const Footer = () => {
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
     { name: 'Products', path: '/products' },
-    { name: 'Retail Management', path: '/retail-management' },
+    { name: 'Our Retail Management', path: '/retail-management' },
     { name: 'Contact Us', path: '/contact' },
   ];
 
@@ -35,7 +35,7 @@ const Footer = () => {
                 <span className="rotate-[-45deg] text-[#D4A853] text-xs font-serif font-bold">P</span>
               </div>
               <div>
-                <span className="text-xl font-serif font-semibold text-white tracking-[0.2em]">PAREKH</span>
+                <span className="text-xl font-serif font-semibold text-white tracking-[0.2em]">LUMINA</span>
                 <span className="block text-[0.5rem] uppercase tracking-[0.35em] text-[#D4A853]/70 font-light">Est. Heritage Textiles</span>
               </div>
             </Link>
@@ -117,7 +117,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[#D4A853] shrink-0" />
-                <span className="text-sm text-white/50">info@parekhtextiles.com</span>
+                <span className="text-sm text-white/50">info@luminatextiles.com</span>
               </li>
             </ul>
           </div>
@@ -126,7 +126,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-white/25 tracking-wider">
-            © {new Date().getFullYear()} PAREKH Premium Textiles. All Rights Reserved.
+            © {new Date().getFullYear()} LUMINA Premium Textiles. All Rights Reserved.
           </p>
           <div className="flex gap-6">
             <Link to="#" className="text-xs text-white/25 hover:text-[#D4A853] transition-colors tracking-wider">Privacy Policy</Link>

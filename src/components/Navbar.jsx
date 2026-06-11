@@ -42,15 +42,14 @@ const Navbar = () => {
   ];
 
   return (
-    <header 
-      className={`fixed top-0 w-full z-40 transition-all duration-300 ${
-        scrolled ? 'bg-primary shadow-lg py-3' : 'bg-primary/95 backdrop-blur-sm py-5'
-      }`}
+    <header
+      className={`fixed top-0 w-full z-40 transition-all duration-300 ${scrolled ? 'bg-primary shadow-lg py-3' : 'bg-primary/95 backdrop-blur-sm py-5'
+        }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex flex-col items-start z-50">
-          <span className="text-2xl md:text-3xl font-serif font-bold text-secondary tracking-widest">PAREKH</span>
+          <span className="text-2xl md:text-3xl font-serif font-bold text-secondary tracking-widest">Textile</span>
           <span className="text-[0.6rem] uppercase tracking-[0.2em] text-white/70">Premium Textiles</span>
         </Link>
 
@@ -60,16 +59,15 @@ const Navbar = () => {
             <Link
               key={link.name}
               to={link.path}
-              className={`text-sm uppercase tracking-wider font-medium hover:text-secondary transition-colors ${
-                location.pathname === link.path ? 'text-secondary' : 'text-white/90'
-              }`}
+              className={`text-sm uppercase tracking-wider font-medium hover:text-secondary transition-colors ${location.pathname === link.path ? 'text-secondary' : 'text-white/90'
+                }`}
             >
               {link.name}
             </Link>
           ))}
-          
+
           {/* Dropdown */}
-          <div 
+          <div
             className="relative"
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
@@ -78,7 +76,7 @@ const Navbar = () => {
               <span>Business</span>
               <ChevronDown size={16} className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} />
             </button>
-            
+
             <AnimatePresence>
               {dropdownOpen && (
                 <motion.div
@@ -106,7 +104,7 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           className="lg:hidden text-white hover:text-secondary transition-colors z-50"
           onClick={() => setIsOpen(!isOpen)}
         >

@@ -39,7 +39,7 @@ const HomeContact = () => {
                 <div className="w-10 h-10 border border-[#D4A853]/30 flex items-center justify-center shrink-0">
                   <Mail size={16} className="text-[#D4A853]" />
                 </div>
-                <span className="text-sm text-white/55 font-light">info@parekhtextiles.com</span>
+                <span className="text-sm text-white/55 font-light">info@luminatextiles.com</span>
               </div>
             </div>
           </div>

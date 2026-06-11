@@ -20,11 +20,6 @@ const BrandStory = () => {
             </div>
             {/* Decorative frame offset */}
             <div className="absolute top-6 left-6 bottom-[-6px] right-[-6px] border border-[#D4A853]/40 z-0" />
-            {/* Amber badge */}
-            <div className="absolute bottom-10 -right-5 z-20 bg-[#0B1C3E] px-7 py-5 shadow-xl">
-              <p className="text-[#D4A853] text-3xl font-serif">30+</p>
-              <p className="text-white text-xs uppercase tracking-widest mt-1 font-light">Years of Legacy</p>
-            </div>
           </div>
 
           {/* Right: Content */}
@@ -39,7 +34,7 @@ const BrandStory = () => {
             </div>
 
             <p className="text-[#6B7A99] leading-relaxed text-base font-light">
-              At ParekhTex, we believe that every fabric tells a story. For generations, we have sourced the finest threads and collaborated with master weavers across India to deliver textiles that blend timeless tradition with modern sophistication.
+              At LuminaTex, we believe that every fabric tells a story. For generations, we have sourced the finest threads and collaborated with master weavers across India to deliver textiles that blend timeless tradition with modern sophistication.
             </p>
 
             <p className="text-[#6B7A99] leading-relaxed text-base font-light">

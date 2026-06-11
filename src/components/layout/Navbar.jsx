@@ -31,7 +31,7 @@ const Navbar = () => {
   ];
 
   const resourceLinks = [
-    { name: 'Retail Management', path: '/retail-management' },
+    { name: 'Our Retail Management', path: '/retail-management' },
     { name: 'Trade Enquiry', path: '/trade-enquiry' },
     { name: 'e-Quotation', path: '/e-quotation' },
     { name: 'e-Auction', path: '/e-auction' },
@@ -61,7 +61,7 @@ const Navbar = () => {
             <span className="rotate-[-45deg] text-[#D4A853] group-hover:text-[#0B1C3E] text-xs font-serif font-bold transition-colors duration-300">P</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-xl md:text-2xl font-serif font-semibold text-white tracking-[0.2em] leading-none">PAREKH</span>
+            <span className="text-xl md:text-2xl font-serif font-semibold text-white tracking-[0.2em] leading-none">LUMINA</span>
             <span className="text-[0.5rem] uppercase tracking-[0.35em] text-[#D4A853]/80 font-light">Est. Heritage Textiles</span>
           </div>
         </Link>
@@ -109,7 +109,7 @@ const Navbar = () => {
                       <Link
                         key={link.name}
                         to={link.path}
-                        className="flex items-center px-5 py-2.5 text-xs text-white/75 hover:text-[#D4A853] hover:bg-white/5 transition-all duration-150 tracking-wider uppercase group"
+                        className="flex items-center px-5 py-2.5 text-[13px] text-white/75 hover:text-[#D4A853] hover:bg-white/5 transition-all duration-150 tracking-wider group"
                       >
                         <span className="w-1 h-1 rounded-full bg-[#D4A853]/40 group-hover:bg-[#D4A853] mr-3 transition-colors" />
                         {link.name}

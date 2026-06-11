@@ -10,7 +10,7 @@ const EAuction = () => {
 
   return (
     <div>
-      <PageHeader title="e-Auction Portal" />
+      <PageHeader title="e-Auction" />
 
       <div className="bg-[#FAF7F0] py-24">
         <div className="max-w-7xl mx-auto px-5 md:px-8">

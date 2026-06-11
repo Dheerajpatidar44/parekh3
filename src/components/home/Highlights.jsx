@@ -40,7 +40,7 @@ const Highlights = () => {
         <div className="text-center mb-16">
           <p className="text-[#D4A853] text-xs uppercase tracking-[0.4em] font-medium mb-4">Why Choose Us</p>
           <h2 className="text-4xl md:text-5xl font-serif font-light text-white">
-            The ParekhTex Advantage
+            The LuminaTex Advantage
           </h2>
           <div className="w-12 h-0.5 bg-[#D4A853] mx-auto mt-5" />
         </div>

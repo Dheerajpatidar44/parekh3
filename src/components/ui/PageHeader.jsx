@@ -77,10 +77,7 @@ const PageHeader = ({ title }) => {
       {/* === CONTENT === */}
       <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-12 text-center">
 
-        {/* Gold decorative label */}
-        <p className="text-[0.6rem] uppercase tracking-[0.45em] text-[#D4A853]/60 mb-4 font-light">
-          Parekh Premium Textiles
-        </p>
+      
 
         {/* Title */}
         <h1 className="text-5xl md:text-[3.75rem] font-serif font-light text-white tracking-wide leading-tight">

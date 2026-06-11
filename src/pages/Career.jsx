@@ -50,7 +50,7 @@ const Career = () => {
             <h2 className="text-4xl font-serif font-light text-[#0B1C3E] mb-4">Join Our Journey</h2>
             <div className="w-12 h-0.5 bg-[#D4A853] mb-6" />
             <p className="text-[#6B7A99] text-sm leading-relaxed font-light">
-              At Parekh Textiles, we believe our people are the fabric of our success. We offer a dynamic work environment where tradition meets innovation. Explore our current openings and become part of a legacy.
+              At Lumina Textiles, we believe our people are the fabric of our success. We offer a dynamic work environment where tradition meets innovation. Explore our current openings and become part of a legacy.
             </p>
           </div>
 
@@ -69,7 +69,7 @@ const Career = () => {
                     </div>
                     <div className="flex items-center gap-2.5 text-xs text-[#6B7A99]">
                       <Mail size={12} className="text-[#D4A853]" />
-                      <a href="mailto:careers@parekhtex.com" className="hover:text-[#D4A853] transition-colors">careers@parekhtex.com</a>
+                      <a href="mailto:careers@luminatex.com" className="hover:text-[#D4A853] transition-colors">careers@luminatex.com</a>
                     </div>
                   </div>
 

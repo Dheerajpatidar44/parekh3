@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const About = () => {
   const milestones = [
-    { year: '1990', title: 'Founded', desc: 'Parekh Textiles was established in Mumbai with a passion for premium Indian fabrics.' },
+    { year: '1990', title: 'Founded', desc: 'Lumina Textiles was established in Mumbai with a passion for premium Indian fabrics.' },
     { year: '2000', title: 'Expansion', desc: 'Opened regional offices in Delhi, Surat, and Kolkata to serve a pan-India clientele.' },
     { year: '2010', title: 'B2B Growth', desc: 'Launched dedicated wholesale and distributorship programs for retail partners.' },
     { year: '2023', title: 'Digital Era', desc: 'Introduced e-Quotation, e-Auction, and digital trade portals for seamless business.' },
@@ -38,7 +38,7 @@ const About = () => {
 
               <div className="space-y-4 text-[#6B7A99] text-sm leading-relaxed font-light mb-8">
                 <p>
-                  Founded with a passion for quality and an eye for elegance, Parekh Textiles has been a cornerstone of the textile retail industry for over three decades. We bring the rich heritage of Indian weaving and modern fabric technology directly to you.
+                  Founded with a passion for quality and an eye for elegance, Lumina Textiles has been a cornerstone of the textile retail industry for over three decades. We bring the rich heritage of Indian weaving and modern fabric technology directly to you.
                 </p>
                 <p>
                   From exquisite silk sarees to premium suiting fabrics, our collections are curated to meet the diverse needs of our clients. We believe in building lasting relationships through trust, quality, and unparalleled service.
@@ -70,26 +70,7 @@ const About = () => {
         </div>
       </div>
 
-      {/* Timeline */}
-      <div className="bg-[#FAF7F0] py-24">
-        <div className="max-w-7xl mx-auto px-5 md:px-8">
-          <div className="text-center mb-16">
-            <p className="text-[#D4A853] text-xs uppercase tracking-[0.4em] font-medium mb-3">Our Journey</p>
-            <h2 className="text-4xl font-serif font-light text-[#0B1C3E]">Milestones of Excellence</h2>
-            <div className="w-12 h-0.5 bg-[#D4A853] mx-auto mt-5" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#0B1C3E]/8">
-            {milestones.map((m, i) => (
-              <div key={m.year} className="bg-[#FAF7F0] p-8 hover:bg-white transition-colors duration-300 group border-l-2 border-transparent hover:border-l-2 hover:border-[#D4A853]">
-                <div className="text-3xl font-serif text-[#D4A853] mb-4 font-light">{m.year}</div>
-                <h3 className="text-base font-semibold text-[#0B1C3E] mb-3">{m.title}</h3>
-                <p className="text-[#6B7A99] text-sm leading-relaxed font-light">{m.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    
     </div>
   );
 };

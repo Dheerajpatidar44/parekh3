@@ -20,7 +20,7 @@ const FloatingChatbot = () => {
             <div className="bg-[#0B1C3E] px-5 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-[#D4A853] rounded-full animate-pulse" />
-                <span className="text-white text-sm font-medium tracking-wide">Parekh AI Assistant</span>
+                <span className="text-white text-sm font-medium tracking-wide">Lumina AI Assistant</span>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
@@ -34,7 +34,7 @@ const FloatingChatbot = () => {
             <div className="p-5 h-72 overflow-y-auto">
               <div className="bg-white border border-[#D4A853]/20 p-4 max-w-[85%] shadow-sm">
                 <p className="text-sm text-[#0B1C3E] leading-relaxed font-light">
-                  Namaste! 🙏 Welcome to ParekhTEX. How can I help you today?
+                  Namaste! 🙏 Welcome to Lumina tex. How can I help you today?
                 </p>
               </div>
             </div>

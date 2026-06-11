@@ -72,7 +72,7 @@ const Preloader = ({ children }) => {
                 className="text-center"
               >
                 <h1 className="text-5xl font-serif font-light text-white tracking-[0.3em] mb-1">
-                  PAREKH
+                  LUMINA
                 </h1>
                 <p className="text-[0.65rem] uppercase tracking-[0.5em] text-[#D4A853] font-light">
                   Premium Textiles

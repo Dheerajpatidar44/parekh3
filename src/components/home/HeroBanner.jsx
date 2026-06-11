@@ -2,21 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import heroBanner from '../../assets/hero_banner.png';
+import heroBanner from '../../assets/image.png';
 
 const HeroBanner = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#060F22]">
+    <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-[#060F22]">
       {/* Full-bleed hero image */}
       <div className="absolute inset-0 z-0">
         <img
           src={heroBanner}
-          alt="Premium Parekh Textiles Collection"
-          className="w-full h-full object-cover object-center opacity-50"
+          alt="Premium Lumina Textiles Collection"
+          className="w-full h-full object-cover object-center opacity-80"
         />
         {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#060F22]/95 via-[#060F22]/60 to-[#060F22]/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#060F22]/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#060F22]/85 via-[#060F22]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#060F22]/60 via-transparent to-transparent" />
       </div>
 
       {/* Decorative vertical line */}
@@ -31,11 +31,7 @@ const HeroBanner = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             className="flex items-center gap-4 mb-8"
-          >
-            <div className="h-px w-12 bg-[#D4A853]" />
-            <span className="text-[#D4A853] text-xs uppercase tracking-[0.4em] font-medium">
-              Premium Heritage Textiles
-            </span>
+          >          
           </motion.div>
 
           {/* Main heading */}
@@ -46,7 +42,7 @@ const HeroBanner = () => {
             className="text-6xl md:text-7xl lg:text-8xl font-serif font-light text-white leading-[1.05] mb-6"
           >
             Threads of<br />
-            <em className="not-italic text-[#D4A853]">Timeless</em><br />
+            <em className="not-italic text-[#D4A853]">Timeless</em>
             Elegance
           </motion.h1>
 
